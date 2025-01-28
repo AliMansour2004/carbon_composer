@@ -84,5 +84,60 @@ $time = "2021-08-04 16:19:49";
 Carbon::setLocale('ar');
 $dt = Carbon::createFromFormat('Y-m-d H:i:s', $time);
 
-echo $dt->diffForHumans() . "\n";
+echo $dt->diffForHumans() . "<br>";
+
+
+
+
+require_once 'vendor/autoload.php';
+
+
+$faker = Faker\Factory::create();
+
+echo $faker->name(). "<br>";
+echo $faker->email(). "<br>";
+echo $faker->text(). "<br>";
+
+for ($i = 0; $i < 3; $i++) {
+    echo $faker->name() . "<br>";
+}
+
+$values = [];
+for ($i = 0; $i < 10; $i++) {
+    $values []= $faker->unique()->randomDigit();
+}
+print_r($values);
+
+echo "<br>";
+
+$values = [];
+try {
+    for ($i = 0; $i < 10; $i++) {
+        $values []= $faker->unique()->randomDigitNotNull();
+    }
+} catch (\OverflowException $e) {
+    echo "There are only 9 unique digits not null, Faker can't generate 10 of them!";
+}
+
+
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
